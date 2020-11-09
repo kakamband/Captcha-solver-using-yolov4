@@ -54,7 +54,7 @@ def detect(img_path, yolo_data_path, min_confidence, threshold):
 	layerOutputs = net.forward(ln)
 	end = time.time()
 	# show timing information on YOLO
-	print("[INFO] YOLO took {:.6f} seconds".format(end - start))
+	#print("[INFO] YOLO took {:.6f} seconds".format(end - start))
 
 	# initialize our lists of detected bounding boxes, confidences, and
 	# class IDs, respectively
@@ -103,7 +103,7 @@ def detect(img_path, yolo_data_path, min_confidence, threshold):
 	name = img_path
 	if '/' in name:
 		name = name.split("/")[-1]
-	print(name)
+	#print(name)
 
 	class_data = []
 	# ensure at least one detection exists
@@ -124,7 +124,7 @@ def detect(img_path, yolo_data_path, min_confidence, threshold):
 			text = "{}: {:.4f}".format(LABELS[classIDs[i]], confidences[i])
 			# print(text, (x, y))
 			class_data.append(text + ' ' + str(x) + ' ' + str(y))
-			cv2.putText(image, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.4, color, 2)
+			cv2.putText(image, text, (x, y - 5), cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 2)
 
 	def take_x_value(elem):
 		elem = elem.split()
@@ -132,9 +132,15 @@ def detect(img_path, yolo_data_path, min_confidence, threshold):
 
 	class_data.sort(key=take_x_value)
 
-	for box in class_data:
-		print(box)
+	#for box in class_data:
+	#	print(box)
 
 	# save the output image
 	cv2.imwrite('results/'+name, image)
+	return class_data
+
+
+
+
+
 
