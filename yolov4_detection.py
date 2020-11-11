@@ -5,18 +5,6 @@ import time
 import cv2
 import os
 
-# construct the argument parse and parse the arguments
-#ap = argparse.ArgumentParser()
-#ap.add_argument("-i", "--image", required=True,
-#               help="path to input image")
-#ap.add_argument("-y", "--yolo", required=True,
-#                help="base path to YOLO directory")
-#ap.add_argument("-c", "--confidence", type=float, default=0.5,
-#                help="minimum probability to filter weak detections")
-#ap.add_argument("-t", "--threshold", type=float, default=0.3,
-#                help="threshold when applying non-maxima suppression")
-#args = vars(ap.parse_args())
-
 
 def detect(img_path, yolo_data_path, min_confidence, threshold):
 	# load the obj class labels our YOLO model was trained on
@@ -136,8 +124,8 @@ def detect(img_path, yolo_data_path, min_confidence, threshold):
 	#	print(box)
 
 	# save the output image
-	cv2.imwrite('results/'+name, image)
-	return class_data
+	# cv2.imwrite('results/'+name, image)
+	return class_data, image
 
 
 
